@@ -1,5 +1,5 @@
-import { CATEGORIES } from "../../constants/categories";
-import { Category } from "../category/Category";
+import { Category } from "@/components/category/Category";
+import { CATEGORIES } from "@/constants/categories";
 import styles from "./Directory.module.scss";
 
 const Directory = () => {
