@@ -22,7 +22,7 @@ const Navigation = () => {
             </Link>
           </li>
           <li>
-            <Link className={styles["navigation-links__link"]} to="/shop">
+            <Link className={styles["navigation-links__link"]} to="/sign-in">
               Sign In
             </Link>
           </li>
