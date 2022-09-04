@@ -1,4 +1,8 @@
 import FormInput from "@/components/input/Input";
+import {
+  createAuthWithEmailAndPassword,
+  createUserDocFromAuth,
+} from "@/utils/firebase";
 import React from "react";
 
 const SignIn = () => {
@@ -7,17 +11,27 @@ const SignIn = () => {
   const passwordRef = React.createRef<HTMLInputElement>();
   const confirmPasswordRef = React.createRef<HTMLInputElement>();
 
-  const signUp = (e: any) => {
+  const signUp = async (e: any) => {
     e.preventDefault();
-    const user = {
+    const userInfo = {
       displayName: displayNameRef.current?.value,
       email: emailRef.current?.value,
       password: passwordRef.current?.value,
       confirmPassword: confirmPasswordRef.current?.value,
     };
+
+    try {
+      const user = await createAuthWithEmailAndPassword(
+        userInfo.email,
+        userInfo.password
+      );
+      await createUserDocFromAuth(user, {
+        displayName: displayNameRef.current?.value,
+      });
+    } catch (error) {}
   };
   return (
-    <form onSubmit={(e) => signUp(e)}>
+    <form onSubmit={signUp}>
       <FormInput
         id={"displayName"}
         label={"Display Name"}
