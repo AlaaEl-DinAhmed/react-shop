@@ -4,7 +4,7 @@ import Navigation from "./components/navigation/Navigation";
 import Home from "./routes/Home";
 const Shop = () => <div>shop</div>;
 
-const SignIn = React.lazy(() => import("./routes/sign-in/SignIn"));
+const SignIn = React.lazy(() => import("@/routes/sign-in/SignIn"));
 
 function App() {
   return (
